@@ -57,11 +57,7 @@ internal class BlurProvider(context: Context) {
                 }
                 drawBitmap(source, 0f, 0f, paint)
             }
-        val blurBitmap: Bitmap? = try {
-            rs(bitmap, factor.radius)
-        } catch (e: RSRuntimeException) {
-            stack(bitmap, factor.radius, true)
-        }
+        val blurBitmap: Bitmap? = stack(bitmap, factor.radius, true)
         return blurBitmap?.let {
             if (factor.sampling == BlurFactor.DEFAULT_SAMPLING) {
                 it
